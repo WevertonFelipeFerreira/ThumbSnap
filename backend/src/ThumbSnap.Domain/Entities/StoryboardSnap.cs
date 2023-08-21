@@ -15,8 +15,10 @@ namespace ThumbSnap.Domain.Entities
 
         public override Guid Id { get; set; }
         public Guid VideoId { get; set; }
+        public TimeSpan Time { get; set; }
         public int Size { get; set; }
         public string Extension { get; set; }
         public string Path { set; get; }
+        public VideoInformation VideoInformation { get; set; }
     }
 }

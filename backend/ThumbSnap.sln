@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThumbSnap.API", "src\ThumbSnap.API\ThumbSnap.API.csproj", "{3CB3F24B-A7B3-49A2-B5E8-16D2A9C6F754}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThumbSnap.API", "src\ThumbSnap.API\ThumbSnap.API.csproj", "{3CB3F24B-A7B3-49A2-B5E8-16D2A9C6F754}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThumbSnap.Domain", "src\ThumbSnap.Domain\ThumbSnap.Domain.csproj", "{05B0E8F0-5A09-454E-B883-B800CE5C6775}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThumbSnap.Domain", "src\ThumbSnap.Domain\ThumbSnap.Domain.csproj", "{05B0E8F0-5A09-454E-B883-B800CE5C6775}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThumbSnap.Infraestructure", "src\ThumbSnap.Infraestructure\ThumbSnap.Infraestructure.csproj", "{FA3B3FFC-DE4B-4AE3-9D52-8133454F5636}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThumbSnap.Infraestructure", "src\ThumbSnap.Infraestructure\ThumbSnap.Infraestructure.csproj", "{FA3B3FFC-DE4B-4AE3-9D52-8133454F5636}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThumbSnap.Application", "src\ThumbSnap.Application\ThumbSnap.Application.csproj", "{2F08FCF5-83BF-49F7-9698-7F503166D3B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThumbSnap.Application", "src\ThumbSnap.Application\ThumbSnap.Application.csproj", "{2F08FCF5-83BF-49F7-9698-7F503166D3B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThumbSnap.UnitTests", "tests\ThumbSnap.UnitTests\ThumbSnap.UnitTests.csproj", "{2381BCE1-072F-49BA-967B-A4FCDAA7CFAB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThumbSnap.UnitTests", "tests\ThumbSnap.UnitTests\ThumbSnap.UnitTests.csproj", "{2381BCE1-072F-49BA-967B-A4FCDAA7CFAB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThumbSnap.IoC", "ThumbSnap.IoC\ThumbSnap.IoC.csproj", "{C2DC3C03-427C-406E-AD50-974C7F3942FF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{2381BCE1-072F-49BA-967B-A4FCDAA7CFAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2381BCE1-072F-49BA-967B-A4FCDAA7CFAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2381BCE1-072F-49BA-967B-A4FCDAA7CFAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2DC3C03-427C-406E-AD50-974C7F3942FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2DC3C03-427C-406E-AD50-974C7F3942FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2DC3C03-427C-406E-AD50-974C7F3942FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2DC3C03-427C-406E-AD50-974C7F3942FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

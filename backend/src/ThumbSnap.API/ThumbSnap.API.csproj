@@ -4,17 +4,17 @@
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>620e1ab7-3189-4015-8bc2-718cff58c959</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Emgu.CV" Version="4.7.0.5276" />
-    <PackageReference Include="Emgu.CV.runtime.ubuntu-x64" Version="4.7.0.5276" />
-    <PackageReference Include="Emgu.CV.runtime.windows" Version="4.7.0.5276" />
+    <PackageReference Include="MediatR" Version="12.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.10" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\ThumbSnap.IoC\ThumbSnap.IoC.csproj" />
     <ProjectReference Include="..\ThumbSnap.Application\ThumbSnap.Application.csproj" />
     <ProjectReference Include="..\ThumbSnap.Domain\ThumbSnap.Domain.csproj" />
     <ProjectReference Include="..\ThumbSnap.Infraestructure\ThumbSnap.Infraestructure.csproj" />
