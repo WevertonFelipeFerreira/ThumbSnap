@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Emgu.CV.runtime.windows" Version="4.7.0.5276" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ThumbSnap.Domain\ThumbSnap.Domain.csproj" />
     <ProjectReference Include="..\ThumbSnap.Infraestructure\ThumbSnap.Infraestructure.csproj" />
   </ItemGroup>
