@@ -5,16 +5,12 @@ namespace ThumbSnap.Domain.Entities
 {
     public class VideoInformation : EntityBase
     {
-        public VideoInformation(string name, string path, int width, int height, int snapWidth, int snapHeight, int size, TimeSpan duration, int snapTakenEverySeconds)
+        public VideoInformation(string name, string path, int snapWidth, int snapHeight, int snapTakenEverySeconds)
         {
             Name = name;
             Path = path;
-            Width = width;
-            Height = height;
             SnapWidth = snapWidth;
             SnapHeight = snapHeight;
-            Size = size;
-            Duration = duration;
             SnapTakenEverySeconds = snapTakenEverySeconds;
             StoryboardProcessingStatus = StoryboardProcessingStatus.InQueue;
 
