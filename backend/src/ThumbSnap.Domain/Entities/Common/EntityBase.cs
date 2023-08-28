@@ -3,9 +3,9 @@
     public class EntityBase
     {
         public virtual Guid Id { get; set; }
-        private DateTimeOffset CreatedAt { get; set; }
-        private DateTimeOffset ModifiedAt { get; set; }
-        private DateTimeOffset? DeletedAt { get; set; }
+        public DateTimeOffset CreatedAt { get; private set; }
+        public DateTimeOffset ModifiedAt { get;private set; }
+        public DateTimeOffset? DeletedAt { get;private set; }
 
         protected void SetCreatedDate()
         {

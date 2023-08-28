@@ -26,7 +26,10 @@ namespace ThumbSnap.Infraestructure.Persistence.Migrations
                     Duration = table.Column<TimeSpan>(type: "time", nullable: true),
                     SnapTakenEverySeconds = table.Column<int>(type: "int", nullable: false),
                     RejectionMessage = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    StoryboardProcessingStatus = table.Column<int>(type: "int", nullable: false)
+                    StoryboardProcessingStatus = table.Column<int>(type: "int", nullable: false),
+                    CreatedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
+                    ModifiedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
+                    DeletedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -42,7 +45,10 @@ namespace ThumbSnap.Infraestructure.Persistence.Migrations
                     Time = table.Column<TimeSpan>(type: "time", nullable: false),
                     Size = table.Column<int>(type: "int", nullable: false),
                     Extension = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Path = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Path = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
+                    ModifiedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
+                    DeletedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true)
                 },
                 constraints: table =>
                 {

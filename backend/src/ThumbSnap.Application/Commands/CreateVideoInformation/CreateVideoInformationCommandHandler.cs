@@ -21,7 +21,7 @@ namespace ThumbSnap.Application.Commands.CreateVideoInformation
             var entity = _mapper.Map<VideoInformation>(request);
             await _videoInformationRepository.AddAsync(entity);
 
-            throw new NotImplementedException();
+            return _mapper.Map<VideoInformationVM>(entity);
         }
     }
 }

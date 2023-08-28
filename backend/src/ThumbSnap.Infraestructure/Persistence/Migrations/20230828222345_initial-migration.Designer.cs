@@ -12,7 +12,7 @@ using ThumbSnap.Infraestructure.Persistence;
 namespace ThumbSnap.Infraestructure.Persistence.Migrations
 {
     [DbContext(typeof(ThumbSnapDbContext))]
-    [Migration("20230828015249_initial-migration")]
+    [Migration("20230828222345_initial-migration")]
     partial class initialmigration
     {
         /// <inheritdoc />
@@ -31,9 +31,18 @@ namespace ThumbSnap.Infraestructure.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<DateTimeOffset?>("DeletedAt")
+                        .HasColumnType("datetimeoffset");
+
                     b.Property<string>("Extension")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTimeOffset>("ModifiedAt")
+                        .HasColumnType("datetimeoffset");
 
                     b.Property<string>("Path")
                         .IsRequired()
@@ -61,11 +70,20 @@ namespace ThumbSnap.Infraestructure.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<DateTimeOffset?>("DeletedAt")
+                        .HasColumnType("datetimeoffset");
+
                     b.Property<TimeSpan?>("Duration")
                         .HasColumnType("time");
 
                     b.Property<int?>("Height")
                         .HasColumnType("int");
+
+                    b.Property<DateTimeOffset>("ModifiedAt")
+                        .HasColumnType("datetimeoffset");
 
                     b.Property<string>("Name")
                         .IsRequired()

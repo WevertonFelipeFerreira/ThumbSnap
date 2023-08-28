@@ -13,6 +13,8 @@ namespace ThumbSnap.Infraestructure.Persistence.Configurations
             builder.HasOne(x => x.VideoInformation)
                    .WithMany(x => x.Snaps)
                    .HasForeignKey(x => x.VideoId);
+
+            builder.HasQueryFilter(x => !x.DeletedAt.HasValue);
         }
     }
 }

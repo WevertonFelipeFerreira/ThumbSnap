@@ -9,6 +9,8 @@ namespace ThumbSnap.Infraestructure.Persistence.Configurations
         public void Configure(EntityTypeBuilder<VideoInformation> builder)
         {
             builder.HasKey(x => x.Id);
+
+            builder.HasQueryFilter(x => !x.DeletedAt.HasValue);
         }
     }
 }
