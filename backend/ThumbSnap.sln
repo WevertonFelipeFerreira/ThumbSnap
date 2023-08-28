@@ -11,9 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThumbSnap.Infraestructure",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThumbSnap.Application", "src\ThumbSnap.Application\ThumbSnap.Application.csproj", "{2F08FCF5-83BF-49F7-9698-7F503166D3B4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThumbSnap.UnitTests", "tests\ThumbSnap.UnitTests\ThumbSnap.UnitTests.csproj", "{2381BCE1-072F-49BA-967B-A4FCDAA7CFAB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThumbSnap.IoC", "src\ThumbSnap.IoC\ThumbSnap.IoC.csproj", "{C2DC3C03-427C-406E-AD50-974C7F3942FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThumbSnap.IoC", "ThumbSnap.IoC\ThumbSnap.IoC.csproj", "{C2DC3C03-427C-406E-AD50-974C7F3942FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThumbSnap.UnitTests", "tests\ThumbSnap.UnitTests\ThumbSnap.UnitTests.csproj", "{2381BCE1-072F-49BA-967B-A4FCDAA7CFAB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

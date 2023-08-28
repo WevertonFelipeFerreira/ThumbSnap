@@ -13,8 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\ThumbSnap.Application\ThumbSnap.Application.csproj" />
-    <ProjectReference Include="..\src\ThumbSnap.Infraestructure\ThumbSnap.Infraestructure.csproj" />
+    <ProjectReference Include="..\ThumbSnap.Application\ThumbSnap.Application.csproj" />
+    <ProjectReference Include="..\ThumbSnap.Infraestructure\ThumbSnap.Infraestructure.csproj" />
   </ItemGroup>
 
 </Project>

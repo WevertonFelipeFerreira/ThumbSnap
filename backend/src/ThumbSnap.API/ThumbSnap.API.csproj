@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\ThumbSnap.IoC\ThumbSnap.IoC.csproj" />
+    <ProjectReference Include="..\ThumbSnap.IoC\ThumbSnap.IoC.csproj" />
     <ProjectReference Include="..\ThumbSnap.Application\ThumbSnap.Application.csproj" />
     <ProjectReference Include="..\ThumbSnap.Domain\ThumbSnap.Domain.csproj" />
     <ProjectReference Include="..\ThumbSnap.Infraestructure\ThumbSnap.Infraestructure.csproj" />
