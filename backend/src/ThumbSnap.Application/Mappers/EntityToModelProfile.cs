@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using ThumbSnap.Application.ViewModels;
 using ThumbSnap.Domain.Entities;
+using ThumbSnap.Domain.Models;
 
 namespace ThumbSnap.Application.Mappers
 {
