@@ -1,8 +1,10 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using ThumbSnap.Application.Services;
+using ThumbSnap.Domain.Entities;
 using ThumbSnap.Domain.Repositories;
 using ThumbSnap.Domain.Services;
 using ThumbSnap.Infraestructure.Persistence.Repositories;
+using ThumbSnap.Infraestructure.Storage;
 
 namespace ThumbSnap.IoC.Configurations
 {
@@ -12,6 +14,7 @@ namespace ThumbSnap.IoC.Configurations
         {
             services.AddScoped<IVideoEngine, VideoEngine>();
             services.AddScoped<IVideoInformationRepository, VideoInformationRepository>();
+            services.AddScoped<IStorageService, StorageService>();
         }
     }
 }

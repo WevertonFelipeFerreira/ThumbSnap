@@ -5,6 +5,7 @@
         InQueue = 0,
         Rejected = 1,
         Processing = 2,
-        Done = 3
+        InQueueToUpdate = 3,
+        Done = 4
     }
 }
