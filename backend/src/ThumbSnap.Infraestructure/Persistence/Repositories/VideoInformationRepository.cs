@@ -1,4 +1,6 @@
-﻿using ThumbSnap.Domain.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
+using ThumbSnap.Domain.Entities;
 using ThumbSnap.Domain.Enums;
 using ThumbSnap.Domain.Models;
 using ThumbSnap.Domain.Repositories;
@@ -18,6 +20,14 @@ namespace ThumbSnap.Infraestructure.Persistence.Repositories
             await _dbContext.SaveChangesAsync();
         }
 
+        public async Task<IEnumerable<VideoInformation>> GetAsync(Expression<Func<VideoInformation, bool>> predicate, string? navigationPropertyPath = null)
+        {
+            var query = _dbContext.VideoInformations.AsQueryable();
+            return await query.Where(predicate)
+                .SetWithIncludes(navigationPropertyPath)
+                .ToListAsync();
+        }
+
         public async Task<PaginationResult<VideoInformation>> GetAllPaginatedAsync(int? status, int page, int pageSize)
         {
             IQueryable<VideoInformation> videoInformations = _dbContext.VideoInformations;
@@ -28,9 +38,11 @@ namespace ThumbSnap.Infraestructure.Persistence.Repositories
             return await videoInformations.GetPaged(page, pageSize);
         }
 
-        public Task UpdateAsync(VideoInformation entity)
+        public async Task UpdateAsync(VideoInformation entity)
         {
-            throw new NotImplementedException();
+            entity.SetModifiedDate();
+            _dbContext.Entry(entity).State = EntityState.Modified;
+            await _dbContext.SaveChangesAsync();
         }
     }
 }

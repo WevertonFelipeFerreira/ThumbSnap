@@ -1,8 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ThumbSnap.Domain.Entities.Common;
 using ThumbSnap.Domain.Models;
 
 namespace ThumbSnap.Infraestructure.Persistence
 {
+    //TODO: Create utils project and extract the methods bellow to your respective types
     public static class Extensions
     {
         public static async Task<PaginationResult<T>> GetPaged<T>(this IQueryable<T> query, int page, int pageSize) where T : class
@@ -24,6 +26,25 @@ namespace ThumbSnap.Infraestructure.Persistence
                                 .ToListAsync();
 
             return result;
+        }
+
+        public static IQueryable<T> SetWithIncludes<T>(this IQueryable<T> query, string? navigationPropertiesPath) where T : EntityBase
+        {
+            List<string> includes;
+
+            if (navigationPropertiesPath is not null)
+            {
+                includes = navigationPropertiesPath.Split(";").ToList();
+                if (includes.Any())
+                {
+                    foreach (var property in includes)
+                    {
+                        query = query.Include(property);
+                    }
+                }
+            }
+
+            return query;
         }
     }
 }

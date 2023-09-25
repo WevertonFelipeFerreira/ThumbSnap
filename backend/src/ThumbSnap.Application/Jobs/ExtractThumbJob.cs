@@ -1,7 +1,9 @@
 ﻿using Quartz;
 using ThumbSnap.Domain.Entities;
+using ThumbSnap.Domain.Exceptions;
 using ThumbSnap.Domain.Repositories;
 using ThumbSnap.Domain.Services;
+using static ThumbSnap.Domain.Enums.StoryboardProcessingStatus;
 
 namespace ThumbSnap.Application.Jobs
 {
@@ -26,7 +28,31 @@ namespace ThumbSnap.Application.Jobs
             Console.WriteLine($"EXTRACT THUMB JOB INICIADO");
             try
             {
-                //Job logic is here
+                var videoInformations = await _videoInformationRepository.GetAsync(x => x.StoryboardProcessingStatus == InQueue);
+
+                if (!videoInformations.Any())
+                    return;
+
+                foreach (var videoInformation in videoInformations)
+                {
+                    try
+                    {
+                        videoInformation.StoryboardProcessingStatus = Processing;
+                        await _videoInformationRepository.UpdateAsync(videoInformation);
+
+                        var videoCapture = _engine.GetVideoCapture(videoInformation.Path);
+                        if (videoCapture is null)
+                            throw new InvalidVideoPathException();
+
+                        // CONTINUE
+                    }
+                    catch (InvalidVideoPathException ex)
+                    {
+                        videoInformation.StoryboardProcessingStatus = Rejected;
+                        videoInformation.RejectionMessage = $"{ex.Message} ------> {ex.StackTrace}";
+                        await _videoInformationRepository.UpdateAsync(videoInformation);
+                    }
+                }
             }
             catch (Exception ex)
             {
