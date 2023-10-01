@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using ThumbSnap.Application.Services;
-using ThumbSnap.Domain.Entities;
 using ThumbSnap.Domain.Repositories;
 using ThumbSnap.Domain.Services;
 using ThumbSnap.Infraestructure.Persistence.Repositories;

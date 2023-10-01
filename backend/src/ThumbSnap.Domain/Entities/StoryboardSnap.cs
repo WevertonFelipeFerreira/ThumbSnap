@@ -4,11 +4,11 @@ namespace ThumbSnap.Domain.Entities
 {
     public class StoryboardSnap : EntityBase
     {
-        public StoryboardSnap(int size, string path, string extension)
+        public StoryboardSnap(long size, string extension, TimeSpan time)
         {
             Size = size;
-            Path = path;
             Extension = extension;
+            Time = time;
 
             SetCreatedDate();
         }
@@ -16,7 +16,7 @@ namespace ThumbSnap.Domain.Entities
         public override Guid Id { get; set; }
         public Guid VideoId { get; set; }
         public TimeSpan Time { get; set; }
-        public int Size { get; set; }
+        public long Size { get; set; }
         public string Extension { get; set; }
         public string Path { set; get; }
         public VideoInformation VideoInformation { get; set; }

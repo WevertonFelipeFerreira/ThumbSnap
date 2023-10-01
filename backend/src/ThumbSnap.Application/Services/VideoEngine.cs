@@ -1,8 +1,9 @@
 ﻿using Emgu.CV;
 using Emgu.CV.CvEnum;
 using Emgu.CV.Util;
+using ThumbSnap.Domain.DTOs;
 using ThumbSnap.Domain.Enums;
-using ThumbSnap.Domain.Services;
+using ThumbSnap.Domain.Services; 
 
 namespace ThumbSnap.Application.Services
 {
@@ -15,9 +16,9 @@ namespace ThumbSnap.Application.Services
             return videoCapture.IsOpened ? videoCapture : null;
         }
 
-        public IEnumerable<byte[]> GetVideoFramesByteArray(VideoCapture videoCapture, int snapEverySecond = 10, int snapWidth = 320, int snapHeight = 180, ImagesFormats imageFormat = ImagesFormats.Jpg)
+        public IEnumerable<ImageDto> GetVideoFramesByteArray(VideoCapture videoCapture, int snapEverySecond = 10, int? snapWidth = 320, int? snapHeight = 180, ImagesFormats imageFormat = ImagesFormats.Jpg)
         {
-            List<byte[]> imagesInByteArray = new();
+            List<ImageDto> imageDtos = new();
 
             var interval = TimeSpan.FromSeconds(snapEverySecond);
             var startTime = TimeSpan.Zero;
@@ -35,13 +36,22 @@ namespace ThumbSnap.Application.Services
                 {
                     var memoryStream = new VectorOfByte();
                     CvInvoke.Imencode(GetImageFormat(imageFormat), frame, memoryStream);
-                    imagesInByteArray.Add(memoryStream.ToArray());
 
                     startTime += interval;
+                    ImageDto dto = new()
+                    {
+                        Time = startTime,
+                        Size = memoryStream.Length,
+                        Extension = GetImageFormat(imageFormat).Replace(".",""),
+                        Bytes = memoryStream.ToArray()
+                    };
+
+                    imageDtos.Add(dto);
+
                 }
             }
 
-            return imagesInByteArray;
+            return imageDtos;
         }
 
         private string GetImageFormat(ImagesFormats imageFormat)

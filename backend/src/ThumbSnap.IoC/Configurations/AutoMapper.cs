@@ -10,8 +10,9 @@ namespace ThumbSnap.IoC.Configurations
             if (services is null) throw new ArgumentNullException(nameof(services));
 
             services.AddAutoMapper(cfg => cfg.ShouldUseConstructor = ci => !ci.IsPrivate,
-                                          typeof(ModelToEntityProfile)
-
+                                          typeof(ModelToEntityProfile),
+                                          typeof(EntityToModelProfile),
+                                          typeof(DtoToEntityModelProfile)
                                           );
             return services;
         }

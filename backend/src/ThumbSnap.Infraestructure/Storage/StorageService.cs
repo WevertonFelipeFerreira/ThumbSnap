@@ -2,7 +2,7 @@
 using Amazon.S3;
 using Amazon.S3.Transfer;
 using Microsoft.Extensions.Options;
-using ThumbSnap.Domain.Entities;
+using ThumbSnap.Domain.Services;
 
 namespace ThumbSnap.Infraestructure.Storage
 {
@@ -22,9 +22,9 @@ namespace ThumbSnap.Infraestructure.Storage
             _s3Client = new AmazonS3Client(credential, config);
         }
 
-        public async Task<string> UploadFile(Stream file, string fileName, string extension)
+        public async Task<string> UploadFile(Stream file, string prefix, string fileName, string extension)
         {
-            var key = $"{fileName}.{extension.ToLower()}";
+            var key = $"{prefix}/{fileName.Replace(" ", "_")}.{extension.ToLower()}";
             var bucketName = _cfg.BucketName;
 
             var uploadRequest = new TransferUtilityUploadRequest()

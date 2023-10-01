@@ -1,4 +1,5 @@
-﻿using Quartz;
+﻿using AutoMapper;
+using Quartz;
 using ThumbSnap.Domain.Entities;
 using ThumbSnap.Domain.Exceptions;
 using ThumbSnap.Domain.Repositories;
@@ -13,13 +14,16 @@ namespace ThumbSnap.Application.Jobs
         private readonly IVideoInformationRepository _videoInformationRepository;
         private readonly IVideoEngine _engine;
         private readonly IStorageService _storage;
+        private readonly IMapper _mapper;
         public ExtractThumbJob(IVideoInformationRepository videoInformationRepository,
                                IVideoEngine engine,
-                               IStorageService storage)
+                               IStorageService storage,
+                               IMapper mapper)
         {
             _videoInformationRepository = videoInformationRepository;
             _engine = engine;
             _storage = storage;
+            _mapper = mapper;
         }
 
         public async Task Execute(IJobExecutionContext context)
@@ -37,6 +41,7 @@ namespace ThumbSnap.Application.Jobs
                 {
                     try
                     {
+
                         videoInformation.StoryboardProcessingStatus = Processing;
                         await _videoInformationRepository.UpdateAsync(videoInformation);
 
@@ -44,7 +49,30 @@ namespace ThumbSnap.Application.Jobs
                         if (videoCapture is null)
                             throw new InvalidVideoPathException();
 
-                        // CONTINUE
+                        videoInformation.Width = videoCapture.Width;
+                        videoInformation.Height = videoCapture.Height;
+
+                        var imageAsBytes = _engine.GetVideoFramesByteArray(videoCapture,
+                                                                           videoInformation.SnapTakenEverySeconds,
+                                                                           videoInformation.Width,
+                                                                           videoInformation.Height).OrderBy(x => x.Time);
+                        int count = 1;
+                        List<StoryboardSnap> snaps = new();
+                        foreach (var image in imageAsBytes)
+                        {
+                            var snap = _mapper.Map<StoryboardSnap>(image);
+                            Stream bytesAsStream = new MemoryStream(image.Bytes);
+                            var name = videoInformation.Name + $"-{count}";
+                            var path = await _storage.UploadFile(bytesAsStream, videoInformation.Id.ToString(), name, snap.Extension);
+                            snap.Path = path;
+                            snaps.Add(snap);
+                            count++;
+                        }
+
+                        videoInformation.StoryboardProcessingStatus = Done;
+                        videoInformation.Snaps = snaps;
+
+                        await _videoInformationRepository.UpdateAsync(videoInformation);
                     }
                     catch (InvalidVideoPathException ex)
                     {

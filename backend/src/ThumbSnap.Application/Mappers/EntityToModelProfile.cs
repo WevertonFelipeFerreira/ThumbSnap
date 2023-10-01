@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using ThumbSnap.Application.ViewModels;
 using ThumbSnap.Domain.Entities;
-using ThumbSnap.Domain.Models;
 
 namespace ThumbSnap.Application.Mappers
 {
@@ -11,7 +10,7 @@ namespace ThumbSnap.Application.Mappers
         {
             #region Video Information
             CreateMap<VideoInformation, VideoInformationVM>()
-                .ForMember(x=> x.StoryboardProcessingStatus, opt => opt.MapFrom(x=> x.StoryboardProcessingStatus.ToString()));
+                .ForMember(x => x.StoryboardProcessingStatus, opt => opt.MapFrom(x => x.StoryboardProcessingStatus.ToString()));
             #endregion
 
             #region Storyboard Snap

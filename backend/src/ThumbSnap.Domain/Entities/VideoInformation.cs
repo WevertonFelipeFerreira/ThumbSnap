@@ -24,7 +24,7 @@ namespace ThumbSnap.Domain.Entities
         public int? Height { get; set; }
         public int SnapWidth { get; set; }
         public int SnapHeight { get; set; }
-        public int? Size { get; set; }
+        public long? Size { get; set; }
         public TimeSpan? Duration { get; set; }
         public int SnapTakenEverySeconds { get; set; }
         public string? RejectionMessage { get; set; } = null;
